@@ -5,12 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
-import LoginForm from './src/components/LoginForm';
-
+import MyRouter from './MyRouter';
 
 class App extends Component {
   componentWillMount() {
-    // Initialize Firebase
+    //Initialize Firebase
     const config = {
       apiKey: 'AIzaSyDaEI_avp6Qq1vLlZzpmjUG6w6lPTNg7FA',
       authDomain: 'manager-150.firebaseapp.com',
@@ -22,12 +21,11 @@ class App extends Component {
     firebase.initializeApp(config);
   }
 
-
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
-      <LoginForm />  
+        <MyRouter />
       </Provider>
     );
   }
